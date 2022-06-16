@@ -15,7 +15,7 @@
 			<div id="lista">
 				<div class="objLista" th:each="piatto : ${piatti}">
 					<a th:href="@{'/piatto' + '/' + ${piatto.id}}"> <img
-						class="foto-piatto" th:src="@{${piatto.photosImagePath}}" />
+						id="immagine" th:src="@{${piatto.photosImagePath}}" />
 					</a>
 					<section class="infoObj">
 						<div th:text="${piatto.nome}">Nome</div>
