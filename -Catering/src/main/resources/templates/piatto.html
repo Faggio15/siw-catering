@@ -1,0 +1,55 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title='CR3 | Piatto')"></head>
+<body>
+	<nav th:replace="fragments/base.html :: navbar"></nav>
+	<header th:replace="fragments/base.html :: header"></header>
+
+	<section id="principale">
+		<section id="titoloPagina">
+			<h2 th:text="${piatto.nome}">Nome</h2>
+		</section>
+		
+		
+				<div id="flex-container">
+			<section id="dati">
+			    <img id="immagine"
+				     th:src="@{${piatto.photosImagePath}}"/>
+				<ul>
+					
+					<li><h4>Gli ingredienti:</h4>
+						<div th:each="ingrediente : ${ingredienti}">
+					<span th:text="${ingrediente.nome}">Nome</span>
+				</div></li>
+				</ul>
+			</section>
+			<div class="col2">
+				<h5>INFO:</h5>
+				<p id="paragrafo" th:text="${piatto.descrizione}">Descrizione</p>
+			</div>
+		</div>
+		
+		<!-- 
+		<div id="flex-container">
+		    <div>
+				 <img class="foto-piatto" th:src="@{${piatto.photosImagePath}}" />
+		    </div>
+			<div class="col2">
+				<h5>DESCRIZIONE:</h5>
+				<p id="paragrafo" th:text="${piatto.descrizione}">Descrizione</p>
+			</div>
+		</div>
+		<section id="dati">
+			<span id="lista"> Ingredienti:</span>
+
+			<div th:each="ingrediente : ${ingredienti}">
+				   <span th:text="${ingrediente.nome}">Nome</span>
+				 
+			</div>
+		</section>-->
+	</section> 
+	<footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/base.html :: headerfiles(title='CR3 | Area riservata')"></head>
+
+  <body>
+    <nav th:replace="fragments/base.html :: navbar"></nav>
+    <header th:replace="fragments/base.html :: header"></header>
+    
+     <section id="principale">
+    
+       <section id="titoloPagina">
+         <h2>CATERING ROMA TRE</h2>
+       </section>
+      
+       <section id="dati">
+    <div class="flex-container" id="containerPrincipale">
+     
+      <div class="flex-container" id="containerUno">
+		<div>
+			<a th:href="@{/admin/addChef}">Aggiungi Chef</a>
+   		</div>
+		<div>
+			<a th:href="@{/admin/addBuffet}">Aggiungi Buffet</a>
+   		</div>
+   		<div>
+			<a th:href="@{/admin/addPiatto}">Aggiungi Piatto</a>
+   		</div>
+      </div>
+      
+      <div class="flex-container" id="containerDue">
+		<div>
+			<a th:href="@{/admin/deleteChefs}">Elimina Chef</a>
+   		</div>
+		<div>
+			<a th:href="@{/admin/deleteBuffets}">Elimina Buffet</a>
+   		</div>
+   		<div>
+			<a th:href="@{/admin/deletePiatti}">Elimina Piatto</a>
+   		</div> 		  		   		
+     </div>
+     
+     </div>
+    <div><a th:href="@{/logout}"><button id="logout">Logout</button></a></div>
+
+       </section>
+     
+     </section>
+    
+    <footer th:replace="fragments/base.html :: footer"></footer>
+    
+  </body>
+
+</html>

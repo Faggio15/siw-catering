@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title='CR3 | Chefs')"></head>
+
+<body>
+	<nav th:replace="fragments/base.html :: navbar"></nav>
+	<header th:replace="fragments/base.html :: header"></header>
+
+	<section id="principale">
+		<section id="titoloPagina">
+			<h2>I nostri chef:</h2>
+		</section>
+		<section id="dati">
+			<div id="lista">
+				<div class="objLista" th:each="chef : ${chefs}">
+					<a th:href="@{'/chef' + '/' + ${chef.id}}">
+						<img class="foto" th:src="@{${chef.photosImagePath}}" />
+					</a>
+					<section class="infoObj">
+						<div th:text="|${chef.nome} ${chef.cognome}|">Nome</div>
+					</section>
+				</div>
+			</div>
+		</section>
+	</section>
+	<footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

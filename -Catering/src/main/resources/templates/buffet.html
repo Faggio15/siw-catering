@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title='CR3 | Buffet')"></head>
+
+<body>
+	<nav th:replace="fragments/base.html :: navbar"></nav>
+	<header th:replace="fragments/base.html :: header"></header>
+
+	<section id="principale">
+		<section id="titoloPagina">
+			<h2 th:text="${buffet.nome}">Nome</h2>
+			<a sec:authorize="hasAuthority('ADMIN')"
+				th:href="@{'/admin/editBuffet' + '/' + ${buffet.id}}">Modifica</a>
+		</section>
+
+		<div id="flex-container">
+			<div class="col2">
+				<ul>
+					<li><h4>Una proposta di:</h4></li>
+					<span> <a th:href="@{'/chef' + '/' + ${chef.id}}"
+						th:text="|${chef.nome} ${chef.cognome}|">Nome chef </a></span>
+					<li><h4>Descrizione</h4>
+						<div class="col2" id="small-info" th:text="${buffet.descrizione}">Descrizione</div></li>
+				</ul>
+			</div>
+
+			<div class="col2">
+				<ul>
+					<li><h4>I piatti:</h4></li>
+					<li th:each="piatto : ${buffet.piattiBuffet}"><a
+						th:href="@{'/piatto' + '/' + ${piatto.id}}"
+						th:text="${piatto.nome}">Pasta al sugo, an italian dish</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</section>
+	<footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

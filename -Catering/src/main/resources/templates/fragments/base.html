@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles(title)">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
+<link th:href="@{/css/base.css}" rel="stylesheet">
+<link th:href="@{/css/form.css}" rel="stylesheet">
+<link th:href="@{/css/adminhome.css}" rel="stylesheet">
+<title th:text="${title}"></title>
+</head>
+<body>
+	<!-- 
+    <nav th:fragment="loginNav" id="loginNav">
+      
+    <ul>
+        <li><a sec:authorize="isAnonymous()" th:href="@{/login}">Login</a></li>
+        <li><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/default}">Area Riservata</a></li>
+        <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a></li>
+    </ul>
+    </nav> -->
+
+
+	<nav th:fragment="navbar" id="navbar">
+		<ul>
+			<span></span>
+			<li><a th:href="@{/home}">Home</a></li>
+			<li><a th:href="@{/buffets}">I Buffet</a></li>
+			<li><a th:href="@{/chefs}">I nostri chef</a></li>
+			<li><a th:href="@{/piatti}">I piatti</a></li>
+			</span>
+			<span></span>
+			<li><a sec:authorize="isAnonymous()" th:href="@{/login}">Login</a></li>
+			<li><a sec:authorize="hasAuthority('ADMIN')"
+				th:href="@{/default}">Area Riservata</a></li>
+			<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a></li>
+			</span>
+		</ul>
+	</nav>
+
+
+	<header th:fragment="header">
+		<a th:href="@{/home}"> <img id="logo" th:src="@{'/img/logo.png'}" />
+		</a>
+		<div id="catering">
+			Catering<br>Roma<br>Tre
+		</div>
+	</header>
+
+
+
+	<section id="esterna">
+		<section id="principale">
+
+			<section id="titoloPagina">
+				<h2>Titolo Pagina</h2>
+			</section>
+
+			<section id="dati"></section>
+
+		</section>
+	</section>
+
+	<footer th:fragment="footer"> Copyright &copy; | 2022 Catering
+		Roma Tre | Francesco Faggiano </footer>
+
+</body>
+</html>

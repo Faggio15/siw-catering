@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title='CR3 | Buffets')"></head>
+
+<body>
+	<nav th:replace="fragments/base.html :: navbar"></nav>
+	<header th:replace="fragments/base.html :: header"></header>
+
+	<section id="principale">
+		<section id="titoloPagina">
+			<h2>Seleziona i buffet che vuoi eliminare:</h2>
+		</section>
+		<section id="dati">
+			<div id="lista" th:each="buffet : ${buffets}">
+				<a th:href="@{'/buffet' + '/' + ${buffet.id}}">
+					<div id="elem">
+			<span th:text="${buffet.nome}">Nome</span>
+				 <form th:action="@{'/admin/deleteBuffet' + '/' + ${buffet.id}}" method="POST">
+				    <button type="submit"><img id="delete" th:src="@{'/img/delete.png'}"></button>
+			     </form>
+			</div>
+				</a>
+			</div>
+		</section>
+	</section>
+	<footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

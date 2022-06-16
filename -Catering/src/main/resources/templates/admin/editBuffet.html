@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/base.html :: headerfiles(title='CR3 | Modifica un Buffet')"></head>
+
+  <body>
+    <nav th:replace="fragments/base.html :: navbar"></nav>
+    <header th:replace="fragments/base.html :: header"></header>
+     
+     <section id="principale">
+      
+       <section id="dati">
+       
+	<form th:action="@{/admin/buffet}" method="POST" id="loginForm" th:object="${buffet}">
+	  	
+	  	<div>
+		   <h1>Modifica il buffet</h1>
+		</div>
+		
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>
+		
+		<div>
+			<div>
+				<h2>Nome:</h2>
+				<span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>		
+			<div>
+				<h2>Descrizione:</h2>
+				<div><textarea th:field="*{descrizione}" rows="10" cols="30" maxlength:"2000" required /></div>
+			</div>
+			 <div id="tendina" align="center">
+			   <h2>Chef:</h2>
+               <select name="ch">
+                 <option th:each="chef : ${chefs}" th:value="|${chef.nome} ${chef.cognome}|" th:text="|${chef.nome} ${chef.cognome}|">Nome Chef</option>
+               </select>
+              </div>
+              
+              
+              <div>
+					<!--/*@thymesVar id="dishesList" type="java.util.List<Dish>"*/-->
+						<h2>I piatti:</h2>
+						<ul>
+						<li th:each="piatto: ${piatti}">
+						<input type="checkbox" th:field="*{piattiBuffet}"
+								th:value="${piatto.id}">
+							<label th:text="${piatto.nome}">Nome</label>
+							</li>
+						</ul>
+			
+							
+
+				</div>
+               <!--<div id="tendina" align="center">
+                <h2>Piatti:</h2>
+               <select name="pi" multiple required size="2">
+             <option th:each="piatto : ${piatti}" th:value="${piatto.nome}" th:text="${piatto.nome}">Nome Piatto</option>
+              </select>
+              </div> -->
+			<div>
+			   <button type="submit">Invio</button>
+			</div>
+		</div>
+		
+		
+	</form>
+       </section>
+     
+     </section>

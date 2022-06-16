@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title='CR3 | Chef')"></head>
+
+<body>
+	<nav th:replace="fragments/base.html :: navbar"></nav>
+	<header th:replace="fragments/base.html :: header"></header>
+
+	<section id="principale">
+		<section id="titoloPagina">
+			<h1 th:text = "|${chef.nome} ${chef.cognome}|">Nome chef</h1>
+			<a sec:authorize="hasAuthority('ADMIN')" th:href="@{'/admin/editChef' + '/' + ${chef.id}}">Modifica</a>
+		</section>
+		<div id="flex-container">
+			<section id="dati">
+			    <img id="immagine"
+				     th:src="@{${chef.photosImagePath}}"/>
+				<ul>
+					<li><h4>Nazione:</h4>
+						 <span th:text="${chef.nazionalita}">Nazione</span></li>
+					<li><h4>Le proposte dello chef:</h4>
+						<div th:each="buffet : ${buffets}">
+				<a th:href="@{'/buffet' + '/' + ${buffet.id}}">
+					<span th:text="${buffet.nome}">Nome</span>
+				</a>
+				</div></li>
+				</ul>
+			</section>
+			<div class="col2">
+				<h5>INFO:</h5>
+				<p id="paragrafo" th:text="${chef.descrizione}">Descrizione</p>
+			</div>
+		</div>
+
+	</section>
+	<footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

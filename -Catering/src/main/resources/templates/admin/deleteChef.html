@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title='CR3 | Chefs')"></head>
+
+<body>
+	<nav th:replace="fragments/base.html :: navbar"></nav>
+	<header th:replace="fragments/base.html :: header"></header>
+
+	<section id="principale">
+		<section id="titoloPagina">
+			<h2>Seleziona lo chef che vuoi eliminare:</h2>
+		</section>
+		<section id="dati">
+			<div class="objLista" th:each="chef : ${chefs}">
+				<a th:href="@{'/chef' + '/' + ${chef.id}}"> <img
+					class="foto" th:src="@{${chef.photosImagePath}}" />
+				</a>
+				<section class="infoObj">
+					<div th:text="${chef.nome}">Nome</div>
+					<form th:action="@{'/admin/deleteChef' + '/' + ${chef.id}}"
+						method="POST">
+						<button type="submit">
+							<img id="delete" th:src="@{'/img/delete.png'}">
+						</button>
+					</form>
+				</section>
+			</div>
+		</section>
+	</section>
+	<footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

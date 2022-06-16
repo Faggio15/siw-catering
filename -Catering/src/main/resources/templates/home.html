@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/base.html :: headerfiles(title='CR3 | Homepage')"></head>
+
+  <body>
+
+    <nav th:replace="fragments/base.html :: navbar"></nav>
+    
+    <header th:replace="fragments/base.html :: header"></header>
+     
+     <section id="principale">
+    
+       <section id="titoloPagina" >
+         <h2>CATERING ROMA TRE</h2>
+       </section>
+
+       <section id="dati">
+      <div id="flex-container-info">
+        <div class="col-info" id="small-info">
+               <p>Salve a tutti questo è il sito web del caatering di Roma Tre!<br><br>Il miglior servizio di catering della capitale è uno dei pi&ugrave rinomati d'Italia. In questo sito potete trovare tutte le nostre proposte di buffet, ideali per ogni occasione, selezionate appositamente per voi dai nostri chef stellati, combinando i nostri piatti migliori, con gli ingredienti pi&ugrave freschi e genuini. Qui sulla destra potete trovare le indicazioni per venirci a trovare.<br><br>Non dimenticate di prenotarti telefonicamente al numero: 06 5733 2100<br>Ci troviamo in Via Vito Volterra, 62, 00146 Roma RM </p>
+        </div>
+        <div class="col-info"> 
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2971.739294276157!2d12.467468715439576!3d41.855437974811!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13258a922b3edaeb%3A0xd7c1990833e3ea29!2sIngegneria%20Informatica%20-%20Universit%C3%A0%20Roma%20Tre!5e0!3m2!1sit!2sit!4v1623847060561!5m2!1sit!2sit"  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+      </div>
+       </section>
+     
+     </section>
+    
+    <footer th:replace="fragments/base.html :: footer"></footer>
+    
+  </body>
+
+</html>

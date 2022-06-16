@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/base.html :: headerfiles(title='CR3 | Aggiungi un Piatto')"></head>
+
+  <body>
+    <nav th:replace="fragments/base.html :: navbar"></nav>
+    <header th:replace="fragments/base.html :: header"></header>
+     
+     <section id="principale">
+      
+       <section id="dati">
+       
+	<form th:action="@{/admin/piatto}" method="POST" id="loginForm" th:object="${piatto}" enctype="multipart/form-data">
+	  	
+	  	<div>
+		   <h1>Inserisci un piatto</h1>
+		</div>
+		
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>
+		
+		<div>
+			<div>
+				<h2>Nome:</h2>
+				<span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>		
+			
+			<div>
+				<h2>Descrizione:</h2>
+				<div><textarea th:field="*{descrizione}" rows="10" cols="30" maxlength:"2000" required /></div>
+			</div>
+			
+			
+			<!--  <div id="tendina" align="center">
+			   <h2>Buffet:</h2>
+               <select name="t">
+                 <option th:each="buffet : ${buffets}" th:value="${buffet.nome}" th:text="${buffet.nome}">Nome Buffet</option>
+               </select>
+              </div>
+               <div id="tendina" align="center">
+               <h2>Ingredienti:</h2>
+               <select name="cp">
+                 <option th:each="ingrediente : ${ingredienti}" th:value="${ingrediente.nome}" th:text="${ingrediente.nome}">Nome Ingrediente</option>
+               </select>
+              </div>
+               -->
+               
+                <div>
+					<!--/*@thymesVar id="dishesList" type="java.util.List<Dish>"*/-->
+					<fieldset>
+						<legend><h2>Ingredienti</h2></legend>
+						<div th:each="ingrediente: ${ingredienti}">
+							<input type="checkbox" th:field="*{ingredientiPiatto}" 
+								th:value="${ingrediente.id}">
+							<label for="${ingredienti}" th:text="${ingrediente.nome}">Nome ingredient</label>
+						</div>
+					</fieldset>
+				</div>
+               
+               
+              
+              
+            <div>
+			    <h2>Foto:</h2>
+                <span><input type="file" name="image" accept="image/png, image/jpeg, image/jpg" /></span>
+			</div>
+              
+			<div>
+			   <button type="submit">Invio</button>
+			</div>
+		</div>
+		
+		
+	</form>
+       </section>
+     
+     </section>

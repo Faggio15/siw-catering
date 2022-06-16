@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title='CR3 | Buffets')"></head>
+
+<body>
+	<nav th:replace="fragments/base.html :: navbar"></nav>
+	<header th:replace="fragments/base.html :: header"></header>
+	
+	<section id="principale">
+		<section id="titoloPagina">
+			<h2>I nostri Buffet:</h2>
+		</section>
+		<section id="dati">
+			<div id="lista" th:each="buffet : ${buffets}">
+				<a th:href="@{'/buffet' + '/' + ${buffet.id}}">
+					<div id="elem" th:text="${buffet.nome}">Nome</div>
+				</a>
+			</div>
+		</section>
+	</section>
+	<footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

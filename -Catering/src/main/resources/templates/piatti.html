@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title='CR3 | Piatti')"></head>
+
+<body>
+	<nav th:replace="fragments/base.html :: navbar"></nav>
+	<header th:replace="fragments/base.html :: header"></header>
+
+	<section id="principale">
+		<section id="titoloPagina">
+			<h2>I nostri prodotti:</h2>
+		</section>
+		<section id="dati">
+			<div id="lista">
+				<div class="objLista" th:each="piatto : ${piatti}">
+					<a th:href="@{'/piatto' + '/' + ${piatto.id}}"> <img
+						class="foto-piatto" th:src="@{${piatto.photosImagePath}}" />
+					</a>
+					<section class="infoObj">
+						<div th:text="${piatto.nome}">Nome</div>
+					</section>
+				</div>
+			</div>
+		</section>
+	</section>
+	<footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>
